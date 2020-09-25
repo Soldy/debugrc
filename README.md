@@ -1,7 +1,7 @@
-# debugrc (dabug real challange)
+# debugrc (debug real challange)
 
-The debug rc is a simple agent based model debug processor 
-Unlike the most of the abm my model have multiple group agent. like a manager.
+The debugrc is a simple debuger for agent based model debug processor 
+But can be usable for other purpose.
 
 
 ##init a manager
@@ -26,7 +26,7 @@ const debugSubOne = debugManager.newSub('worker one');
 
 ```javascript
 
-debugManager.log(
+debugSubOne.log(
     'worker one', // 
     'event something to debug', // debug text
     7 // debug log level (0-9) (optional)
@@ -42,7 +42,10 @@ const debug_two = debugManager.link('worker two');
 
 // log somethineg
 
-debug_two('idd');
+debug_two(
+    'idd',
+    7
+);
 
 ```
 
