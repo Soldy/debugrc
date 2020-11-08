@@ -1,6 +1,6 @@
 {
   "name": "debugrc",
-  "version": "0.9.9-alpha1",
+  "version": "0.9.9-alpha2",
   "description": "debug helper.",
   "main": "index.js",
   "scripts": {

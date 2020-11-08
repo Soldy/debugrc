@@ -12,7 +12,7 @@ const consoleOut = function(name, log){
 };
 let defaultLevel = 5;
 let currentLevel = 5;
-const debugSubBase = function(nameIn){
+const debugSubBase = function(nameIn, settings){
     this.log = function(log, level){
         if(typeof level === 'undefined')
             level = defaultLevel;
@@ -26,7 +26,17 @@ const debugSubBase = function(nameIn){
             consoleOut(name, log);
     }
     let name = nameIn;
-    let pool = new poolrcBase(4000);
+    let setup = new setupBase({
+        'poolSize':{
+            'type'    : 'integer',
+            'min'     : 1,
+            'max'     : 99999,
+            'default' : 400
+        }
+    });
+    if(typeof settings !== 'undefined')
+        setup.setup(settings);
+    let pool = new poolrcBase(setup.get('poolSize');
 }
 
 const debugBase = function(settings){
@@ -34,7 +44,7 @@ const debugBase = function(settings){
         return newSub(name);
     }
     this.sub = function(name){
-        return agents[name];
+        return subs[name];
     }
     this.link = function(name){
         newSub(name);
@@ -45,7 +55,7 @@ const debugBase = function(settings){
     };
     let newSub = function(name){
         if(typeof subs[name] === 'undefined')
-            subs[name] = new debugSubBase();
+            subs[name] = new debugSubBase(name);
         return subs[name];
     }
     let setup = new setupBase({
