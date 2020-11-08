@@ -36,7 +36,7 @@ const debugSubBase = function(nameIn, settings){
     });
     if(typeof settings !== 'undefined')
         setup.setup(settings);
-    let pool = new poolrcBase(setup.get('poolSize');
+    let pool = new poolrcBase(setup.get('poolSize'));
 }
 
 const debugBase = function(settings){
