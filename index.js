@@ -18,13 +18,13 @@ const debugSubBase = function(nameIn, settings){
             level = defaultLevel;
         let time = (+new Date);
         pool.add({
-               time,
-               log,
-               level
+            time,
+            log,
+            level
         });
         if(level > currentLevel)
             consoleOut(name, log);
-    }
+    };
     let name = nameIn;
     let setup = new setupBase({
         'poolSize':{
@@ -37,19 +37,19 @@ const debugSubBase = function(nameIn, settings){
     if(typeof settings !== 'undefined')
         setup.setup(settings);
     let pool = new poolrcBase(setup.get('poolSize'));
-}
+};
 
 const debugBase = function(settings){
     this.newSub = function(name){
         return newSub(name);
-    }
+    };
     this.sub = function(name){
         return subs[name];
-    }
+    };
     this.link = function(name){
         newSub(name);
         return subs[name].log;
-    }
+    };
     this.setup = function(){
         return setup;
     };
@@ -57,7 +57,7 @@ const debugBase = function(settings){
         if(typeof subs[name] === 'undefined')
             subs[name] = new debugSubBase(name);
         return subs[name];
-    }
+    };
     let setup = new setupBase({
         'defaultLevel':{
             'type'    : 'integer',
@@ -81,6 +81,6 @@ const debugBase = function(settings){
     if(typeof settings !== 'undefined')
         setup.setup(settings);
 
-}
+};
 
 exports.debugBase = debugBase;
