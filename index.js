@@ -1,42 +1,59 @@
-const poolrcBase = (require('poolrc')).poolrc;
-const setupBase = (require('setuprc')).setupBase;
-const ic = new (require('interactiveConsole')).console();
+const $poolrcBase = (require('poolrc')).base:
+const $setupBase = (require('setuprc')).setupBase;
+const $ic = new (require('interactiveConsole')).console();
 
 const consoleOut = function(name, log){
-    ic.printLn(
-        ic.style(
+    $ic.printLn(
+        $ic.style(
             '['+name+']',
             {color: 'green'}
-        ) + log
+        )  + log
     );
 };
 let defaultLevel = 5;
 let currentLevel = 5;
-const debugSubBase = function(nameIn, settings){
+const debugSubBase = function(settings){
     this.log = function(log, level){
         if(typeof level === 'undefined')
             level = defaultLevel;
-        let time = (+new Date);
-        pool.add({
+        const time = (+new Date);
+        _pool.add({
             time,
             log,
             level
         });
         if(level > currentLevel)
-            consoleOut(name, log);
+            consoleOut(
+                _setup.get('name'),
+                log
+            );
     };
-    let name = nameIn;
-    let setup = new setupBase({
+    this.all = function(){
+         return _pool.all();
+    }
+    const _setup = new setupBase({
+        'name' : {
+            'type'    : 'string',
+            'default' : 'debug'
+        },
         'poolSize':{
             'type'    : 'integer',
             'min'     : 1,
             'max'     : 99999,
             'default' : 400
+        },
+        'level' : {
+            'type' : 'integer',
+            'min'  : 0,
+            'max'  : 9
+
         }
     });
-    if(typeof settings !== 'undefined')
-        setup.setup(settings);
-    let pool = new poolrcBase(setup.get('poolSize'));
+    if(typeof settings_in !== 'undefined')
+        _setup.setup(settings_in);
+    const _pool = new $poolrcBase(
+        _setup.get('poolSize')
+    );
 };
 
 const debugBase = function(settings){
