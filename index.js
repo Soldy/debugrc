@@ -1,4 +1,4 @@
-const $poolrcBase = (require('poolrc')).base:
+const $poolrcBase = (require('poolrc')).base;
 const $setupBase = (require('setuprc')).setupBase;
 const $ic = new (require('interactiveConsole')).console();
 

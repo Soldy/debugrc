@@ -1,6 +1,6 @@
 {
   "name": "debugrc",
-  "version": "0.9.9-alpha2",
+  "version": "0.9.9-alpha3",
   "description": "debug helper.",
   "main": "index.js",
   "scripts": {
@@ -11,11 +11,10 @@
     "url": "https://github.com/Soldy/debugrc"
   },
   "dependencies": {
-    "poolrc": "^0.9.9-alpha"
+    "poolrc": "1.0.0-rc7"
   },
   "devDependencies": {
-    "interactiveConsole": "0.0.7-alpha0",
-    "nanoTest": "^0.9.9-beta1"
+    "nanoTest": "0.9.9-beta32"
   },
   "keywords": [],
   "author": "Soldy <npmjs@gidigi.com> (http://gidigi.com)",
