@@ -1,10 +1,11 @@
 const $poolrcBase = (require('poolrc')).base;
-const $setupBase = (require('setuprc')).setupBase;
-const $ic = new (require('interactiveConsole')).console();
+const $setupBase = (require('setuprc')).base;
+const $ic = new (require('consolestdiorc')).base();
+const $style = (new (require('consolestylerc')).base()).style;
 
 const consoleOut = function(name, log){
     $ic.printLn(
-        $ic.style(
+        $style(
             '['+name+']',
             {color: 'green'}
         )  + log
@@ -31,7 +32,7 @@ const debugSubBase = function(settings){
     this.all = function(){
          return _pool.all();
     }
-    const _setup = new setupBase({
+    const _setup = new $setupBase({
         'name' : {
             'type'    : 'string',
             'default' : 'debug'
@@ -75,7 +76,7 @@ const debugBase = function(settings){
             subs[name] = new debugSubBase(name);
         return subs[name];
     };
-    let setup = new setupBase({
+    let setup = new $setupBase({
         'defaultLevel':{
             'type'    : 'integer',
             'min'     : 0,
